@@ -8,7 +8,7 @@
 <head th:replace="fragments :: head"></head>
 <body class ="container">
 
-<h1>Create Event</h1>
+<!--<h1>Create Event</h1>-->
 
 <nav th:replace="fragments :: navigation"></nav>
 <!--<header th:replace="fragments :: header"></header>-->
@@ -34,32 +34,55 @@
         <label>Description
 <!--            <input type="text" name="eventDescription" class="form-control">-->
 <!--            <input type="text" name="description" class="form-control">-->
-            <input th:field="${event.description}" class="form-control">
-<!--            form the field name id gets generated for each field, we can check it by  inspect element -->
+<!--            <input th:field="${event.description}" class="form-control">-->
+            <input th:field="${event.eventDetails.description}" class="form-control">
+
+            <!--            form the field name id gets generated for each field, we can check it by  inspect element -->
 
         </label>
-        <p class="error" th:errors="${event.description}"></p>
+<!--        <p class="error" th:errors="${event.description}"></p>-->
+        <p class="error" th:errors="${event.eventDetails.description}"></p>
+
 
     </div>
     <br>
     <div class="form-group">
         <label>Email
 <!--        <input type="text" name="contactEmail"  class="form-control">-->
-            <input th:field="${event.contactEmail}" class="form-control">
+<!--            <input th:field="${event.contactEmail}" class="form-control">-->
+            <input th:field="${event.eventDetails.contactEmail}" class="form-control">
+
 
         </label>
-        <p class="error" th:errors="${event.contactEmail}"></p>
+<!--        <p class="error" th:errors="${event.contactEmail}"></p>-->
+        <p class="error" th:errors="${event.eventDetails.contactEmail}"></p>
+
     </div>
     <br>
     <div class="form-group">
-        <label>Type
-            <select th:field="${event.type}">
-                <option th:each="type : ${types}"
-                        th:value="${type}"
-                        th:text="${type.displayName}"
+<!--        <label>Type-->
+<!--            <select th:field="${event.type}">-->
+<!--                <option th:each="type : ${types}"-->
+<!--                        th:value="${type}"-->
+<!--                        th:text="${type.displayName}"-->
+<!--                ></option>-->
+<!--            </select>-->
+<!--        </label>-->
+<!--        Caused by: org.springframework.beans.NotReadablePropertyException: Invalid property 'category' of bean class-->
+
+        <label>Category
+<!--            <select th:field="${event.category}">-->
+
+
+            <select th:field="${event.eventCategory}">
+                <option th:each="eventCategory : ${categories}"
+                        th:value="${eventCategory.id}"
+                        th:text="${eventCategory.name}"
                 ></option>
             </select>
         </label>
+        <p class="error" th:errors="${event.eventCategory}"></p>
+
     </div>
 <!--                        th:value is for caps version-->
 <!--                th:text is for human read able version-->

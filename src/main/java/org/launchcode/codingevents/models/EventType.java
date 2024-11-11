@@ -1,5 +1,5 @@
 package org.launchcode.codingevents.models;
-
+//We can delete EventType enum as it is not used in relationshipMapping
 public enum EventType {
 
     CONFERENCE("Conference"),
